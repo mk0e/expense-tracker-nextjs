@@ -11,7 +11,8 @@ Create an implementation plan for the GitHub issue: $ARGUMENTS
 3. Read CLAUDE.md and review `prisma/schema.prisma`, `app/actions/`, and `components/`
 4. Plan changes across Database, Backend, and Frontend layers
 5. Identify dependencies, potential issues, and execution order
-6. Save to `specs/<feature-slug>/plan.md` using this structure:
+6. **DO NOT** include test creation in the plan
+7. Save to `specs/<feature-slug>/plan.md` using this structure:
 
 ```markdown
 # Implementation Plan: [Title]
@@ -43,7 +44,6 @@ Create an implementation plan for the GitHub issue: $ARGUMENTS
 1. Database: Update `prisma/schema.prisma`, run migrations
 2. Backend: Create/modify server actions
 3. Frontend: Create/modify components and pages
-4. Testing: Unit, integration, manual checklist
 
 ## Complexity
 Database: [Low/Medium/High] | Backend: [Low/Medium/High] | Frontend: [Low/Medium/High]
