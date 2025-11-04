@@ -7,24 +7,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id           String        @id @default(uuid())
-  clerkUserId  String        @unique
-  email        String        @unique
-  name         String?
-  imageUrl     String?
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  transactions Transaction[]
-}
-
 model Transaction {
   id        String   @id @default(uuid())
   text      String
   amount    Float
-  userId    String
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [clerkUserId], onDelete: Cascade)
-
-  @@index([userId])
 }

@@ -6,7 +6,7 @@ allowed-tools: Bash(gh *, mkdir *), Write, Read
 
 Create an implementation plan for the GitHub issue: $ARGUMENTS
 
-1. Fetch issue details using `gh` CLI (title, description, comments)
+1. Fetch the github issue details
 2. Create feature folder: `specs/<feature-slug>/` (derive slug from issue title)
 3. Read CLAUDE.md and review `prisma/schema.prisma`, `app/actions/`, and `components/`
 4. Plan changes across Database, Backend, and Frontend layers
