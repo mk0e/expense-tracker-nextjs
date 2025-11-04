@@ -30,6 +30,9 @@ npx prisma generate
 # Push schema changes to database (development)
 npx prisma db push
 
+# Reset database (delete and recreate)
+npm run db:reset
+
 # Prisma Best Practices for Development
 # For SQLite: Use 'npx prisma db push' instead of 'npx prisma migrate dev'
 # After schema changes: Run 'npx prisma generate' twice with a delay to ensure types update fully
