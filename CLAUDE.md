@@ -30,6 +30,10 @@ npx prisma generate
 # Push schema changes to database (development)
 npx prisma db push
 
+# Prisma Best Practices for Development
+# For SQLite: Use 'npx prisma db push' instead of 'npx prisma migrate dev'
+# After schema changes: Run 'npx prisma generate' twice with a delay to ensure types update fully
+
 # Open Prisma Studio to view/edit data
 npx prisma studio
 ```
@@ -78,3 +82,18 @@ Centralized Prisma client in `lib/db.ts` prevents multiple instances in developm
 ### Path Aliases
 
 Uses `@/*` path alias mapping to project root (configured in tsconfig.json).
+
+## Project Conventions
+
+### Libraries and Patterns
+
+- **Toast Notifications**: Use `react-toastify` (already installed). Do NOT use `react-hot-toast` or other toast libraries.
+- **Prisma Type Imports**: Use `import type { Model } from '@prisma/client'` for type-only imports to avoid runtime overhead.
+
+### Code Consistency
+
+Before creating new code:
+1. Check existing codebase for established patterns (component structure, import styles, library choices)
+2. Match existing conventions for Server/Client Components
+3. Use the same libraries and approaches already in the project
+4. Ensure new components follow the established RSC patterns

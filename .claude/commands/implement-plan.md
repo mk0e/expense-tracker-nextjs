@@ -1,7 +1,7 @@
 ---
 description: Execute implementation from feature plan
 argument-hint: <feature-slug>
-allowed-tools: Write, Edit, Read, Bash, TodoWrite, Glob, Grep, mcp__puppeteer__puppeteer_navigate, mcp__puppeteer__puppeteer_screenshot, mcp__puppeteer__puppeteer_click, mcp__puppeteer__puppeteer_fill, mcp__puppeteer__puppeteer_evaluate
+allowed-tools: Write, Edit, Read, Bash, TodoWrite, Glob, Grep, mcp__puppeteer__puppeteer_navigate, mcp__puppeteer__puppeteer_click, mcp__puppeteer__puppeteer_fill, mcp__puppeteer__puppeteer_evaluate
 ---
 
 Execute the feature implementation for: $ARGUMENTS
@@ -44,15 +44,16 @@ Execute the feature implementation for: $ARGUMENTS
    - Follow patterns: RSC by default, Client Components for forms/interactions
 
 5. **Smoke Test with Puppeteer**:
-   - Create screenshots folder: `specs/$ARGUMENTS/screenshots/`
    - Start dev server in background: `npm run dev` (if not already running)
    - Wait for server to be ready (check for "Ready" message or port 3000)
    - Use Puppeteer to perform simple verification tests:
      - Navigate to `http://localhost:3000`
-     - Take screenshot of main page, save to `specs/$ARGUMENTS/screenshots/01-main-page.png`
      - Test basic feature functionality (e.g., click buttons, fill forms related to the feature)
-     - Verify no obvious errors in console using puppeteer_evaluate
-     - Take screenshots of key states, save to `specs/$ARGUMENTS/screenshots/` with descriptive names (02-feature-state.png, etc.)
+     - Make sure to test the happy path of using the feature
+     - **IMPORTANT**: Use only standard CSS selectors (e.g., `button`, `.class`, `#id`, `[attribute="value"]`)
+     - Avoid pseudo-selectors like `:has-text()` - these are not valid CSS and will fail
+     - When standard selectors don't work, use `puppeteer_evaluate` with JavaScript to find and interact with elements
+     - Verify no console errors using `puppeteer_evaluate` to check `console` state
    - Stop the dev server after testing
    - Report any issues found and update todo list
 
@@ -77,13 +78,9 @@ Execute the feature implementation for: $ARGUMENTS
 - Other commands executed
 
 ## Smoke Testing Results (Puppeteer)
-- Screenshots folder: `screenshots/`
-- Screenshots captured:
-  - `screenshots/01-main-page.png` - Main page initial state
-  - `screenshots/02-feature-state.png` - [Description]
-  - [Additional screenshots...]
 - Pages verified: [list of pages/routes tested]
 - Interactive elements tested: [buttons, forms, etc.]
+- Feature functionality validated: [describe what was tested]
 - Console errors: [none / list any found]
 - Overall status: [Pass / Issues Found]
 
