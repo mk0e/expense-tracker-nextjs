@@ -1,35 +1,83 @@
-# Expense Tracker (Next.js, TypeScript, Neon & Clerk)
+# Expense Tracker (Next.js, TypeScript, Prisma)
 
-Application for tracking income and expenses. It uses Next.js with [Neon](https://fyi.neon.tech/traversy) to persist data and [Clerk](https://go.clerk.com/BsG2XQJ) for authentication.
-
-[Watch The Tutorial](https://www.youtube.com/watch?v=I6DCo5RwHBE)
-
-[Try Demo](https://traversydemos.dev)
+A simple local expense tracker application built with Next.js 14, TypeScript, and Prisma (SQLite). Track your income and expenses with real-time balance calculations - no authentication required, single user local app.
 
 <div style="text-align:center;margin:30px auto;">
   <img src="public/screenshot.png" alt="" width="500" style="margin: 0 auto;" />
 </div>
 
-## Usage
+## Features
+
+- Add and delete income/expense transactions
+- Real-time balance calculations
+- Track total income and expenses
+- Local SQLite database (no external services required)
+- Built with Next.js App Router and Server Components
+- Type-safe database access with Prisma
+
+## Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Database**: SQLite with Prisma ORM
+- **UI**: React Server Components
+- **Notifications**: react-toastify
+
+## Getting Started
 
 ### Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
-### Add Environment Variables:
+### Environment Setup:
 
-Rename the `.env.example` file to `.env.local` and add the following values:
+The project includes a `.env` file with the SQLite database configuration:
 
-- `DATABASE_URL`: Your db string from https://neon.tech
-- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Your Clerk public frontend API key from https://dashboard.clerk.dev/settings/api-keys
-- `CLERK_SECRET_KEY`: Your Clerk secret key from https://dashboard.clerk.dev/settings/api-keys
+```env
+DATABASE_URL="file:./prisma/dev.db"
+```
 
-Run the development server:
+No additional environment variables are required.
+
+### Run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the app.
+
+### Build for production:
+
+```bash
+pnpm build
+pnpm start
+```
+
+## Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm db:reset` - Reset the database (delete all data)
+- `pnpm prisma studio` - Open Prisma Studio to view/edit data
+- `pnpm prisma db push` - Push schema changes to database
+
+## Project Structure
+
+- `app/` - Next.js App Router pages and layouts
+- `app/actions/` - Server Actions for data mutations
+- `components/` - Reusable React components
+- `lib/` - Utility functions and database client
+- `prisma/` - Database schema and SQLite database file
+
+## Database Schema
+
+Single `Transaction` model:
+- `id` - Auto-incrementing primary key
+- `text` - Transaction description
+- `amount` - Transaction amount (positive = income, negative = expense)
+- `createdAt` - Timestamp
