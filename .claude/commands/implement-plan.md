@@ -15,6 +15,8 @@ Execute the feature implementation for: $ARGUMENTS
    - Confirm branch creation with user
 
 2. **Read the Plan**: Load and parse `specs/$ARGUMENTS/plan.md` to understand all required changes
+   - Pay special attention to the "Library Documentation Insights" section for guidance on proper library usage
+   - Use these insights to inform implementation decisions and follow documented best practices
 
 3. **Create Todo List**: Use TodoWrite to create tasks for each implementation step:
    - Database changes
